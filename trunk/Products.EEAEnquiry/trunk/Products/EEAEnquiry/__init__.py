@@ -9,12 +9,6 @@ from Products.Archetypes import atapi
 from Products.Archetypes import listTypes
 from Products.EEAEnquiry import config
 
-CustomizationPolicy = None
-try:
-    import CustomizationPolicy
-except ImportError, err:
-    logger.debug(err)
-
 DirectoryView.registerDirectory('skins', config.product_globals)
 DirectoryView.registerDirectory('skins/EEAEnquiry',
                                     config.product_globals)
@@ -57,8 +51,3 @@ def initialize(context):
             meta_type   = all_ftis[i]['meta_type'],
             constructors= (all_constructors[i],),
             permission  = config.ADD_CONTENT_PERMISSIONS[klassname])
-
-    # Apply customization-policy, if theres any
-    if CustomizationPolicy and hasattr(CustomizationPolicy, 'register'):
-        CustomizationPolicy.register(context)
-        print 'Customization policy for EEAEnquiry installed'
