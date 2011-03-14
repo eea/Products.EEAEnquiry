@@ -28,11 +28,11 @@ __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
 
-from Products.CMFCore.utils import getToolByName
+#from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.WorkflowTool import addWorkflowFactory
 from Products.DCWorkflow.DCWorkflow import DCWorkflowDefinition
-from Products.ExternalMethod.ExternalMethod import ExternalMethod
-from Products.EEAEnquiry.config import *
+#from Products.ExternalMethod.ExternalMethod import ExternalMethod
+#from Products.EEAEnquiry.config import *
 
 ##code-section create-workflow-module-header #fill in your manual code here
 ##/code-section create-workflow-module-header
@@ -184,11 +184,11 @@ def setupEnquiryFolder(self, workflow):
 
 
 
-def createEnquiryFolder(self, id):
+def createEnquiryFolder(self, eid):
     """Create the workflow for EEAEnquiry.
     """
 
-    ob = DCWorkflowDefinition(id)
+    ob = DCWorkflowDefinition(eid)
     setupEnquiryFolder(self, ob)
     return ob
 

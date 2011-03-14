@@ -31,19 +31,21 @@ __docformat__ = 'plaintext'
 # Base TestCase for EEAEnquiry
 #
 
-import os, sys, code
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
-
+import sys, code
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
 from Testing import ZopeTestCase
 from Products.PloneTestCase import PloneTestCase
-from Products.EEAEnquiry.config import HAS_PLONE21
 from Products.EEAEnquiry.config import PRODUCT_DEPENDENCIES
 from Products.EEAEnquiry.config import DEPENDENCIES
-
+import logging
+logger = logging.getLogger("Products.EEAEnquiry.tests.EnquiryTestCase")
+try:
+    from Products.EEAEnquiry.config import HAS_PLONE21
+    HAS_PLONE21
+except ImportError:
+    HAS_PLONE21 = None
 # Add common dependencies
 if not HAS_PLONE21:
     DEPENDENCIES.append('Archetypes')
@@ -118,8 +120,3 @@ def test_suite():
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer
-
-if __name__ == '__main__':
-    framework()
-
-

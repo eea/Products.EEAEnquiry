@@ -28,15 +28,13 @@ __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
 
-import os.path
-import sys
 from StringIO import StringIO
 from sets import Set
-from App.Common import package_home
+#from App.Common import package_home
 from Products.CMFCore.utils import getToolByName
-from Products.CMFCore.utils import manage_addTool
+#from Products.CMFCore.utils import manage_addTool
 from Products.ExternalMethod.ExternalMethod import ExternalMethod
-from zExceptions import NotFound, BadRequest
+from zExceptions import NotFound #, BadRequest
 
 from Products.Archetypes.Extensions.utils import installTypes
 from Products.Archetypes.Extensions.utils import install_subskin
@@ -44,6 +42,9 @@ from Products.Archetypes.config import TOOL_NAME as ARCHETYPETOOLNAME
 from Products.Archetypes.atapi import listTypes
 from Products.EEAEnquiry.config import PROJECTNAME
 from Products.EEAEnquiry.config import product_globals as GLOBALS
+from transaction import get as get_transaction
+import logging
+logger = logging.getLogger("Products.EEAEnquiry.Extensions.Install")
 
 def install(self):
     """ External Method to install EEAEnquiry """
@@ -55,14 +56,15 @@ def install(self):
     # AppConfig.py (imported by config.py) to use it.
     try:
         from Products.EEAEnquiry.config import DEPENDENCIES
-    except:
+        DEPENDENCIES
+    except ImportError:
         DEPENDENCIES = []
     portal = getToolByName(self,'portal_url').getPortalObject()
     quickinstaller = portal.portal_quickinstaller
     for dependency in DEPENDENCIES:
         print >> out, "Installing dependency %s:" % dependency
         quickinstaller.installProduct(dependency)
-        get_transaction().commit(1)
+        get_transaction().commit()
 
     classes = listTypes(PROJECTNAME)
     installTypes(self, out,
@@ -111,7 +113,7 @@ def install(self):
         print >>out,'no workflow install'
 
     #bind classes to workflows
-    wft = getToolByName(self,'portal_workflow')
+    #wft = getToolByName(self,'portal_workflow')
 
     # enable portal_factory for given types
     factory_tool = getToolByName(self,'portal_factory')
@@ -129,42 +131,42 @@ def install(self):
         for stylesheet in STYLESHEETS:
             try:
                 portal_css.unregisterResource(stylesheet['id'])
-            except:
-                pass
+            except Exception, err:
+                logger.info(err)
             defaults = {'id': '',
             'media': 'all',
             'enabled': True}
             defaults.update(stylesheet)
             portal_css.manage_addStylesheet(**defaults)
-    except:
+    except Exception, err:
         # No portal_css registry
-        pass
+        logger.info(err)
     from Products.EEAEnquiry.config import JAVASCRIPTS
     try:
         portal_javascripts = getToolByName(portal, 'portal_javascripts')
         for javascript in JAVASCRIPTS:
             try:
                 portal_javascripts.unregisterResource(javascript['id'])
-            except:
-                pass
+            except Exception, err:
+                logger.info(err)
             defaults = {'id': ''}
             defaults.update(javascript)
             portal_javascripts.registerScript(**defaults)
-    except:
+    except Exception, err:
         # No portal_javascripts registry
-        pass
+        logger.info(err)
 
     # try to call a custom install method
     # in 'AppInstall.py' method 'install'
     try:
-        install = ExternalMethod('temp', 'temp',
+        ainstall = ExternalMethod('temp', 'temp',
                                  PROJECTNAME+'.AppInstall', 'install')
     except NotFound:
-        install = None
+        ainstall = None
 
-    if install:
+    if ainstall:
         print >>out,'Custom Install:'
-        res = install(self)
+        res = ainstall(self)
         if res:
             print >>out,res
         else:
@@ -195,14 +197,14 @@ def uninstall(self):
     # try to call a custom uninstall method
     # in 'AppInstall.py' method 'uninstall'
     try:
-        uninstall = ExternalMethod('temp', 'temp',
+        auninstall = ExternalMethod('temp', 'temp',
                                    PROJECTNAME+'.AppInstall', 'uninstall')
-    except:
-        uninstall = None
+    except NotFound:
+        auninstall = None
 
-    if uninstall:
+    if auninstall:
         print >>out,'Custom Uninstall:'
-        res = uninstall(self)
+        res = auninstall(self)
         if res:
             print >>out,res
         else:
@@ -220,7 +222,7 @@ def beforeUninstall(self, reinstall, product, cascade):
     try:
         beforeuninstall = ExternalMethod('temp', 'temp',
                                    PROJECTNAME+'.AppInstall', 'beforeUninstall')
-    except:
+    except NotFound:
         beforeuninstall = []
 
     if beforeuninstall:
@@ -244,7 +246,7 @@ def afterInstall(self, reinstall, product):
     try:
         afterinstall = ExternalMethod('temp', 'temp',
                                    PROJECTNAME+'.AppInstall', 'afterInstall')
-    except:
+    except NotFound:
         afterinstall = None
 
     if afterinstall:

@@ -27,6 +27,7 @@ def initialize(context):
 
     # imports packages and types for registration
     import content
+    content.register_content()
 
     # Initialize portal content
     all_content_types, all_constructors, all_ftis = atapi.process_types(

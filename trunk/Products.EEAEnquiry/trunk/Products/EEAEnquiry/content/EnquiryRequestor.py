@@ -28,10 +28,14 @@ __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
 
+from Products.Archetypes.atapi import (
+        Schema, StringField, SelectionWidget, StringWidget, 
+        ReferenceField, ReferenceWidget, BaseSchema, BaseContent, 
+        registerType, BooleanField, BooleanWidget, PasswordWidget
+)
 from Products.validation.validators import ExpressionValidator
-from Products.EEAEnquiry.config import *
+from Products.EEAEnquiry.config import PROJECTNAME
 
 ##code-section module-header #fill in your manual code here
 from interfaces import IEnquiryRequestor
@@ -266,7 +270,8 @@ class EnquiryRequestor(BaseContent):
     def getPassword(self):
         return self.schema['password'].get(self)
 
-registerType(EnquiryRequestor, PROJECTNAME)
+def register():
+    registerType(EnquiryRequestor, PROJECTNAME)
 # end of class EnquiryRequestor
 
 ##code-section module-footer #fill in your manual code here

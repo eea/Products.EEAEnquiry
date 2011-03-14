@@ -41,6 +41,11 @@ import EnquiryRequestor
 import EnquiryFolder
 import EnquiryRequestorFolder
 
+def register_content():
+    Enquiry.register() 
+    EnquiryRequestor.register() 
+    EnquiryFolder.register() 
+    EnquiryRequestorFolder.register() 
 ##code-section init-module-footer #fill in your manual code here
 ##/code-section init-module-footer
 
