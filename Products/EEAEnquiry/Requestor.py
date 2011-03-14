@@ -28,8 +28,12 @@ __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
-from Products.EEAEnquiry.config import *
+from Products.Archetypes.atapi import (
+        Schema, StringField, StringWidget, SelectionWidget, BaseSchema, 
+        BaseContent, registerType
+    )
+
+from Products.EEAEnquiry.config import PROJECTNAME
 
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header

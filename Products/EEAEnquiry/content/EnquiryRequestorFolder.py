@@ -28,9 +28,9 @@ __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
 from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
+from Products.Archetypes.atapi import registerType, Schema 
 from Products.ATContentTypes.content.folder import ATBTreeFolder
-from Products.EEAEnquiry.config import *
+from Products.EEAEnquiry.config import PROJECTNAME
 from Products.CMFCore.permissions import ModifyPortalContent
 
 ##code-section module-header #fill in your manual code here
@@ -90,8 +90,8 @@ class EnquiryRequestorFolder(ATBTreeFolder):
     def getCatalogs(self):
         return []
 
-
-registerType(EnquiryRequestorFolder, PROJECTNAME)
+def register():
+    registerType(EnquiryRequestorFolder, PROJECTNAME)
 # end of class EnquiryRequestorFolder
 
 ##code-section module-footer #fill in your manual code here

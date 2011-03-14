@@ -1,6 +1,6 @@
 import unittest
 from zope.testing import doctest
-from Testing import ZopeTestCase
+#from Testing import ZopeTestCase
 from Testing.ZopeTestCase import ZopeDocTestSuite
 
 

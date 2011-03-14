@@ -6,5 +6,5 @@ class EnquiryCatalog(BaseTool):
     
     id = 'portal_enquiry_catalog'
 
-
-InitializeClass(EnquiryCatalog)
+def register_catalog():
+    InitializeClass(EnquiryCatalog)

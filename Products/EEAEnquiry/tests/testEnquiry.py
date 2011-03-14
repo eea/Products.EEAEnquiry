@@ -27,10 +27,6 @@
 __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
-import os, sys
-if __name__ == '__main__':
-    execfile(os.path.join(sys.path[0], 'framework.py'))
-
 ##code-section module-header #fill in your manual code here
 ##/code-section module-header
 
@@ -38,12 +34,12 @@ if __name__ == '__main__':
 # Test-cases for class(es) Enquiry
 #
 
-from Testing import ZopeTestCase
-from Products.EEAEnquiry.config import *
+#from Testing import ZopeTestCase
+#from Products.EEAEnquiry.config import *
 from Products.EEAEnquiry.tests.EnquiryTestCase import EnquiryTestCase
 
 # Import the tested classes
-from Products.EEAEnquiry.content.Enquiry import Enquiry
+#from Products.EEAEnquiry.content.Enquiry import Enquiry
 
 ##code-section module-beforeclass #fill in your manual code here
 ##/code-section module-beforeclass
@@ -63,23 +59,23 @@ class testEnquiry(EnquiryTestCase):
     def test_Enquiry(self):
         self.setRoles('Manager')
         root = self.portal
-        id = root.invokeFactory(type_name='EnquiryFolder', id="enquiry",
+        eid = root.invokeFactory(type_name='EnquiryFolder', id="enquiry",
                                 title='Enquiries for EEA' )
-        eFolder = getattr(root, id)
-        id = eFolder.invokeFactory(type_name='EnquiryRequestorFolder', id="requestors",
+        eFolder = getattr(root, eid)
+        eid = eFolder.invokeFactory(type_name='EnquiryRequestorFolder', id="requestors",
                                 title='Requestors for EEA' )
-        eReqFolder = getattr(eFolder, id)
+        eReqFolder = getattr(eFolder, eid)
 
         self.logout()
-        id = eFolder.invokeFactory(type_name='Enquiry', id="e1",
+        eid = eFolder.invokeFactory(type_name='Enquiry', id="e1",
                                    title="Enquiry 1", description="description enquiry 1")
-        en = getattr(eFolder, id)
+        en = getattr(eFolder, eid)
         self.failIf(en.getEnquiryRequestor() is not None)
 
-        id = eReqFolder.invokeFactory(type_name='EnquiryRequestor', id="er1",
+        eid = eReqFolder.invokeFactory(type_name='EnquiryRequestor', id="er1",
                                    title="Enquiry requestor 1", description="description enquiry 1")
 
-        eReq = getattr(eReqFolder, id)
+        eReq = getattr(eReqFolder, eid)
         en.setEnquiryRequestor(eReq)
         self.failIf(en.getEnquiryRequestor() != eReq)
 
@@ -92,8 +88,5 @@ def test_suite():
 
 ##code-section module-footer #fill in your manual code here
 ##/code-section module-footer
-
-if __name__ == '__main__':
-    framework()
 
 

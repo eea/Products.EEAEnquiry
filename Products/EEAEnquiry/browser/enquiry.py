@@ -1,5 +1,5 @@
-import zope.interface
-import zope.component
+#import zope.interface
+#import zope.component
 
 from Products.Five import BrowserView as FiveBrowserView
 from Products.CMFCore.utils import getToolByName
