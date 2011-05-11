@@ -1,17 +1,19 @@
 """ Initialize
 """
-import logging
-logger = logging.getLogger('Products.EEAEnquiry')
 
-from Products.CMFCore import utils as cmfutils
-from Products.CMFCore import DirectoryView
 from Products.Archetypes import atapi
 from Products.Archetypes import listTypes
+from Products.CMFCore import utils as cmfutils
 from Products.EEAEnquiry import config
+import logging
 
-DirectoryView.registerDirectory('skins', config.product_globals)
-DirectoryView.registerDirectory('skins/EEAEnquiry',
-                                    config.product_globals)
+
+logger = logging.getLogger('Products.EEAEnquiry')
+
+#from Products.CMFCore import DirectoryView
+#DirectoryView.registerDirectory('skins', config.product_globals)
+#DirectoryView.registerDirectory('skins/EEAEnquiry',
+                                    #config.product_globals)
 
 def initialize(context):
     """ Zope 2
@@ -23,9 +25,6 @@ def initialize(context):
              , icon='tool.gif'
              ).initialize( context )
 
-    ##/code-section custom-init-top
-
-    # imports packages and types for registration
     import content
     content.register_content()
 

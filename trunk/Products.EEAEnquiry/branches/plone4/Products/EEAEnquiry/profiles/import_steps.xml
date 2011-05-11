@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<import-steps>
+
+    <import-step 
+        id="eeaenqury-types" 
+        handler="Products.EEAEnquiry.setuphandlers.installTypesCatalog"
+        title="Setting custom cataloging for types"
+        version="1">
+        Setting custom cataloging for types
+        <dependency step="typeinfo"/>
+    </import-step>
+
+</import-steps>
+
