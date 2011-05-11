@@ -1,0 +1,20 @@
+Changelog
+=========
+[David Ichim - david.ichim@eaudeweb.ro]
+
+0.3-dev - (unreleased)
+----------------------
+ * Cleanup: of pyflakes compiler warnings [ichimdav #4141]
+ * Cleanup: of pylint violations [ichimdav #4140]
+ * Bug fix: Fixed DeprecationWarning: CMFCorePermissions [voineali #4139]
+ * Bug fix: Fixed DeprecationWarning: CustomizationPolicies [voineali #4139]
+
+0.2 - (2011-02-17)
+------------------
+ * Feature: Eggified product [ichimdav #2931]
+ * Change: Changed wording for EEAEnquiry [ichimdav #3217]
+
+0.1 (2010-10-11)
+-------------------
+ - Initial release
+
