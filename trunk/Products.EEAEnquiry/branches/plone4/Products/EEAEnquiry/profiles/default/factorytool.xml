@@ -3,7 +3,6 @@
  <factorytypes>
   <type portal_type="Enquiry"/>
   <type portal_type="EnquiryFolder"/>
-  <type portal_type="CFTRequestor"/>
   <type portal_type="EnquiryRequestorFolder"/>
   <type portal_type="EnquiryRequestor"/>
  </factorytypes>
