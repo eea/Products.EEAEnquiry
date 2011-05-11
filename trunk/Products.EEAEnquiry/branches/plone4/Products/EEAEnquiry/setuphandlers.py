@@ -1,5 +1,8 @@
 from Products.Archetypes.config import TOOL_NAME as ARCHETYPETOOLNAME
 from Products.CMFCore.utils import getToolByName
+from Products.PluginIndexes.FieldIndex.FieldIndex import FieldIndex
+from Products.ZCTextIndex.ZCTextIndex import ZCTextIndex
+from Products.ZCTextIndex.OkapiIndex import OkapiIndex
 import logging
 
 logger = logging.getLogger("Products.EEAEnquiry.setuphandlers")
@@ -60,4 +63,52 @@ def switchPathIndex(context):
         logger.info("Added ExtendedPathIndex 'path' to portal_catalog.")
 
         #TODO: plone4, if this is still needed, then catalog reindexing is needed
+
+
+def installCatalogIndexes(context):
+    if context.readDataFile('Products.EEAEnquiry.txt') is None:
+        return
+
+    portal = context.getSite()
+    catalog = getToolByName(portal, 'portal_enquiry_catalog')
+
+    try:
+        index = catalog._catalog.getIndex('portal_type')
+        index = catalog._catalog.getIndex('Title')
+    except KeyError:
+        logger.info("Adding indexes to catalog")
+        fieldindex = FieldIndex("portal_type")
+
+        class Empty:
+            pass
+
+        elem = []
+
+        wordSplitter = Empty()
+        wordSplitter.group = 'Word Splitter'
+        wordSplitter.name = 'HTML aware splitter'
+
+        caseNormalizer = Empty()
+        caseNormalizer.group = 'Case Normalizer'
+        caseNormalizer.name = 'Case Normalizer'
+
+        stopWords = Empty()
+        stopWords.group = 'Stop Words'
+        stopWords.name = 'Remove listed and single char words'
+
+        elem.append(wordSplitter)
+        elem.append(caseNormalizer)
+        elem.append(stopWords)
+        catalog.manage_addProduct['ZCTextIndex'].manage_addLexicon('plone_lexicon', 'Default Lexicon', elem)
+
+        title_extras = Empty()
+        title_extras.doc_attr = 'Title'
+        title_extras.index_type = 'Okapi BM25 Rank'
+        title_extras.lexicon_id = 'plone_lexicon'
+
+        catalog.addIndex('portal_type', 'FieldIndex')
+        catalog.addIndex('Title', "ZCTextIndex", title_extras)
+
+        catalog.addColumn('portal_type')
+        catalog.addColumn('Title')
 

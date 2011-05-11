@@ -34,18 +34,18 @@ from Products.Archetypes.atapi import (
         ReferenceField, ReferenceWidget, BaseSchema, BaseContent, 
         registerType, BooleanField, BooleanWidget, PasswordWidget
 )
-from Products.validation.validators import ExpressionValidator
-from Products.EEAEnquiry.config import PROJECTNAME
 
-##code-section module-header #fill in your manual code here
-from interfaces import IEnquiryRequestor
-import zope.interface
-from Products.validation.config import validation
-from Products.validation.interfaces import ivalidator
 from Products.CMFCore.utils import getToolByName
+from Products.EEAEnquiry.config import PROJECTNAME
+from Products.validation.config import validation
+from Products.validation.interfaces.IValidator import IValidator
+from Products.validation.validators import ExpressionValidator
+from interfaces import IEnquiryRequestor
+from zope.interface import implements
+
 
 class UniqueRequestorValidator:
-    __implements__ = (ivalidator,)
+    implements(IValidator)
 
     def __init__( self, name, title='', description=''):
         self.name = name
@@ -225,21 +225,18 @@ schema = Schema((
 ),
 )
 
-##code-section after-local-schema #fill in your manual code here
 schema['enquiries'].widget.visible={'edit': 'invisible'}
-##/code-section after-local-schema
 
 EnquiryRequestor_schema = BaseSchema.copy() + \
     schema.copy()
 
-##code-section after-schema #fill in your manual code here
-##/code-section after-schema
 
 class EnquiryRequestor(BaseContent):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
+    #__implements__ = (getattr(BaseContent,'__implements__',()),)
+    implements(IEnquiryRequestor)
 
     # This name appears in the 'add' box
     archetype_name = 'EnquiryRequestor'
@@ -260,22 +257,9 @@ class EnquiryRequestor(BaseContent):
 
     schema = EnquiryRequestor_schema
 
-    ##code-section class-header #fill in your manual code here
-    zope.interface.implements(IEnquiryRequestor)
-    ##/code-section class-header
-
-    # Methods
-
     security.declarePublic('getPassword')
     def getPassword(self):
         return self.schema['password'].get(self)
 
 def register():
     registerType(EnquiryRequestor, PROJECTNAME)
-# end of class EnquiryRequestor
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
-
-

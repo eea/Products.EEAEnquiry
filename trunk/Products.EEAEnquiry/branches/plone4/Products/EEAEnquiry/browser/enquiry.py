@@ -6,6 +6,7 @@ from Products.CMFCore.utils import getToolByName
 from AccessControl.SecurityManagement import newSecurityManager, setSecurityManager
 from AccessControl import getSecurityManager, SpecialUsers
 
+
 def ownerOfObject(obj):
     """Provides acl_user acquisition wrapped owner of object"""
     udb, uid = obj.getOwnerTuple()
@@ -21,6 +22,7 @@ def ownerOfObject(obj):
             user = user.__of__(udb)
     return user
 
+
 class BrowserView(FiveBrowserView):
 
     def _getContext(self):
@@ -28,6 +30,7 @@ class BrowserView(FiveBrowserView):
     def _setContext(self, value):
         self._context = [value]
     context = property(_getContext, _setContext)
+
 
 class SendEnquiry(BrowserView):
 
@@ -74,6 +77,7 @@ class SendEnquiry(BrowserView):
                     nt_ob.unSubscribe(nt_subscriber.id)
             setSecurityManager(oldSecurityManager)
 
+
 class SubmitEnquiry(BrowserView):
 
     def hasCanceled(self):
@@ -109,7 +113,10 @@ class SubmitEnquiry(BrowserView):
         email = context.getEmail()
         password = self.request.get('password' , '')
         cat = getToolByName(context, 'portal_enquiry_catalog')
-        requestors = cat.searchResults( portal_type = 'EnquiryRequestor', Title = email )
+        requestors = cat.searchResults(
+                portal_type = 'EnquiryRequestor', 
+                Title = email 
+                )
         
         if len(requestors) == 0:
             folder = context.aq_inner.aq_parent.objectValues('EnquiryRequestorFolder')[0]
@@ -121,7 +128,6 @@ class SubmitEnquiry(BrowserView):
             
             self._connectRequestorAndEnquiry(reqObj, enquiry)
             return self.request.response.redirect( reqObj.absolute_url() + '/edit')
-            
             
         if self.request.get('login', None) is not None:
             for req in requestors:
@@ -176,6 +182,7 @@ class SubmitEnquiry(BrowserView):
 
         return False
 
+
 class EnquiryRequestor(BrowserView):
 
     def canView(self):
@@ -227,4 +234,6 @@ class EnquiryRequestor(BrowserView):
                      'GENDER': user.getSex()=='Mr' and 1 or 0,
                      'FIRSTNAME': user.getFirstname(),
                      'CITY': user.getCity() })
+
         return ('InvalidUser', 'No such user')
+

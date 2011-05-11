@@ -1,4 +1,4 @@
-from Globals import InitializeClass
+from App.class_init import InitializeClass
 from Products.CMFPlone.CatalogTool import CatalogTool as BaseTool
 
 class EnquiryCatalog(BaseTool):

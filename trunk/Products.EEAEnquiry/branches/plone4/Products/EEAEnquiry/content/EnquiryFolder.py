@@ -32,63 +32,42 @@ from Products.Archetypes.atapi import Schema, registerType
 from Products.ATContentTypes.content.folder import ATBTreeFolder
 from Products.EEAEnquiry.config import PROJECTNAME
 
-##code-section module-header #fill in your manual code here
-##/code-section module-header
-
-schema = Schema((
-
-),
-)
-
-##code-section after-local-schema #fill in your manual code here
-##/code-section after-local-schema
+schema = Schema((),) 
 
 EnquiryFolder_schema = getattr(ATBTreeFolder, 'schema', Schema(())).copy() + \
     schema.copy()
 
-##code-section after-schema #fill in your manual code here
-##/code-section after-schema
 
 class EnquiryFolder(ATBTreeFolder):
     """
     """
     security = ClassSecurityInfo()
-    __implements__ = (getattr(ATBTreeFolder,'__implements__',()),)
+    #__implements__ = (getattr(ATBTreeFolder,'__implements__',()),)
 
     # This name appears in the 'add' box
     archetype_name = 'EnquiryFolder'
+    meta_type      = 'EnquiryFolder'
+    portal_type    = 'EnquiryFolder'
 
-    meta_type = 'EnquiryFolder'
-    portal_type = 'EnquiryFolder'
-    allowed_content_types = ['Enquiry', 'EnquiryRequestorFolder'] + list(getattr(ATBTreeFolder, 'allowed_content_types', []))
-    filter_content_types = 1
-    global_allow = 1
+    #allowed_content_types = ['Enquiry', 'EnquiryRequestorFolder'] + \
+            #list(getattr(ATBTreeFolder, 'allowed_content_types', []))
+    #filter_content_types = 1
+    #global_allow = 1
     #content_icon = 'EnquiryFolder.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "EnquiryFolder"
-    typeDescMsgId = 'description_edit_enquiryfolder'
+    #immediate_view = 'base_view'
+    #default_view = 'base_view'
+    #suppl_views = ()
+    #typeDescription = "EnquiryFolder"
+    #typeDescMsgId = 'description_edit_enquiryfolder'
 
     _at_rename_after_creation = True
 
     schema = EnquiryFolder_schema
 
-    ##code-section class-header #fill in your manual code here
-    ##/code-section class-header
-
-    # Methods
-
     security.declarePublic('getCatalogs')
     def getCatalogs(self):
         return []
 
+
 def register():
     registerType(EnquiryFolder, PROJECTNAME)
-# end of class EnquiryFolder
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
-
-

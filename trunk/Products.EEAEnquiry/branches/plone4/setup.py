@@ -30,7 +30,9 @@ setup(
  install_requires=[
      "setuptools",
 
-     "Products.EEAPloneAdmin",  #has the necessary workflows
+     "Products.ATVocabularyManager",
+     #"Products.EEAPloneAdmin",  #has the necessary workflows
+
  ],
  entry_points="""
  # -*- Entry points: -*-

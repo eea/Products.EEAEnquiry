@@ -34,14 +34,12 @@ from Products.Archetypes.atapi import (
         registerType, StringWidget
 )
 
-from Products.validation.validators import ExpressionValidator
+import transaction
 from Products.EEAEnquiry.config import PROJECTNAME
-
-##code-section module-header #fill in your manual code here
-from Products.Archetypes import transaction
+from Products.validation.validators import ExpressionValidator
 from interfaces import IEnquiry
 import zope.interface
-##/code-section module-header
+
 
 schema = Schema((
 
@@ -117,15 +115,11 @@ schema = Schema((
 ),
 )
 
-##code-section after-local-schema #fill in your manual code here
 schema['enquiryRequestor'].widget.visible={'edit': 'invisible'}
-##/code-section after-local-schema
 
 Enquiry_schema = BaseSchema.copy() + \
     schema.copy()
 
-##code-section after-schema #fill in your manual code here
-##/code-section after-schema
 
 class Enquiry(BaseContent):
     """
@@ -152,13 +146,7 @@ class Enquiry(BaseContent):
 
     schema = Enquiry_schema
 
-    ##code-section class-header #fill in your manual code here
     zope.interface.implements(IEnquiry)
-    ##/code-section class-header
-
-    # Methods
-
-    # Manually created methods
 
     security.declarePrivate('_renameAfterCreation')
     def _renameAfterCreation(self, check_auto_id=False):
@@ -169,12 +157,7 @@ class Enquiry(BaseContent):
         self.setId(new_id)
         return new_id
 
+
 def register():
     registerType(Enquiry, PROJECTNAME)
-# end of class Enquiry
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
-
 
