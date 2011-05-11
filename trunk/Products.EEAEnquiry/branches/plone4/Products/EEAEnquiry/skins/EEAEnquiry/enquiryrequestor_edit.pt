@@ -17,12 +17,10 @@
      <metal:body use-macro="here/edit_macros/macros/body">
          <metal:buttons fill-slot="buttons">
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        name="form_submit"
                        value="Confirm and send"
                        i18n:attributes="value label_confirm_and_send;"
-                       tal:attributes="tabindex tabindex/next;"
                        />
          </metal:buttons>
      </metal:body>

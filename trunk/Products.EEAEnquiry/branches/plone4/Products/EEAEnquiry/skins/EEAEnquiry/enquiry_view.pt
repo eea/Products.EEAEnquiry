@@ -16,7 +16,7 @@
           email request/email|here/getEmail|nothing;
           errors here/@@checkErrors;
           view here/@@enquiryStep2;">
-          <form tal:attributes="action python:context.absolute_url() + '/' + template_id"
+          <form tal:attributes="action python:context.absolute_url() + '/' + 'base_view'"
             method="post"
             id="enquiry_login_form">
 
@@ -38,12 +38,10 @@
                   class="formHelp">
                   If you have forgotten your password just enter your email and press
                   <input class="context"
-                    tabindex=""
                     type="submit"
                     name="mailpassword"
                     value="Please send my password"
                     i18n:attributes="value label_please_send_my_password;"
-                    tal:attributes="tabindex tabindex/next;"
                     />
 
                 </div>
@@ -52,11 +50,9 @@
 
                 <input type="text"
                   size="15"
-                  tabindex=""
                   name="email"
                   id="email"
-                  tal:attributes="value email|nothing;
-                  tabindex tabindex/next;"
+                  tal:attributes="value email|nothing;"
                   />
 
               </div>
@@ -78,20 +74,16 @@
 
                 <input type="password" name="password" id="password"
                   size="15"
-                  tabindex=""
-                  tal:attributes="tabindex tabindex/next;"
                   />
               </div>
 
               <div class="formControls">
 
                 <input class="context"
-                  tabindex=""
                   type="submit"
                   name="login"
                   value="Log in"
                   i18n:attributes="value label_log_in;"
-                  tal:attributes="tabindex tabindex/next;"
                   />
 
               </div>
