@@ -18,4 +18,8 @@
 
 	</bindings>
 
+    <object name="Enquiry" meta_type="Workflow"/>
+    <object name="EnquiryFolder" meta_type="Workflow"/>
+    <object name="EnquiryRequestor" meta_type="Workflow"/>
+
 </object>

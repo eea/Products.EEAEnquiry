@@ -10,6 +10,14 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <!--<genericsetup:registerProfile-->
+        <!--name="testfixture"-->
+        <!--title="Products.EEAEnquiry test fixture"-->
+        <!--directory="profiles/testfixture"-->
+        <!--description="Test fixture profile for EEAEnquiry"-->
+        <!--provides="Products.GenericSetup.interfaces.EXTENSION"-->
+        <!--/>-->
+
 </configure>
 
 
