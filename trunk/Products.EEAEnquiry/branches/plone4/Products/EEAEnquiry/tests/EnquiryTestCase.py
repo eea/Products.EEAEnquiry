@@ -32,19 +32,44 @@ __docformat__ = 'plaintext'
 #
 
 
-from Testing import ZopeTestCase
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.GenericSetup import EXTENSION, profile_registry
 from Products.PloneTestCase import PloneTestCase
+from Products.PloneTestCase.layer import onsetup
+from Testing import ZopeTestCase as ztc
 import logging
+
 
 logger = logging.getLogger("Products.EEAEnquiry.tests.EnquiryTestCase")
 
-ZopeTestCase.installProduct('EEAEnquiry')
 
 PRODUCTS = ['EEAEnquiry']
-PROFILES = ['Products.EEAEnquiry:default']
+PROFILES = [
+            'Products.EEAEnquiry:default',
+            'Products.EEAEnquiry:testfixture',
+            ]
+
+ztc.installProduct('EEAEnquiry')
+
+@onsetup
+def setup_site():
+    """ Set up
+    """
+
+    profile_registry.registerProfile(
+                        name='testfixture',
+                        title='EEAEnquiry test fixtures',
+                        description='Extension profile for testing EEAEnquiry',
+                        path='profile/testfixture',
+                        product='Products.EEAEnquiry',
+                        profile_type=EXTENSION,
+                        for_=IPloneSiteRoot
+                    )
+
+
+setup_site()
 
 PloneTestCase.setupPloneSite(products=PRODUCTS, extension_profiles=PROFILES)
-
 
 class EnquiryTestCase(PloneTestCase.PloneTestCase):
     """Base TestCase for EEAEnquiry."""

@@ -1,23 +1,21 @@
 <?xml version="1.0"?>
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
-    <property name="title">Contains workflow definitions for your portal</property>
 
-    <bindings>
+	<bindings>
 
-        <type type_id="Enquiry">
-            <bound-workflow workflow_id="Enquiry"/>
-        </type>
-        <type type_id="EnquiryFolder">
-            <bound-workflow workflow_id="EnquiryFolder"/>
-        </type>
-        <type type_id="EnquiryRequestor">
-            <bound-workflow workflow_id="EnquiryRequestor"/>
-        </type>
-        <type type_id="EnquiryRequestorFolder">
-            <bound-workflow workflow_id="EnquiryFolder"/>
-        </type>
+		<type type_id="Enquiry">
+			<bound-workflow workflow_id="Enquiry"/>
+		</type>
+		<type type_id="EnquiryFolder">
+			<bound-workflow workflow_id="EnquiryFolder"/>
+		</type>
+		<type type_id="EnquiryRequestor">
+			<bound-workflow workflow_id="EnquiryRequestor"/>
+		</type>
+		<type type_id="EnquiryRequestorFolder">
+			<bound-workflow workflow_id="EnquiryFolder"/>
+		</type>
 
 	</bindings>
 
 </object>
-
