@@ -27,8 +27,6 @@
 __author__ = """unknown <unknown>"""
 __docformat__ = 'plaintext'
 
-##code-section module-header #fill in your manual code here
-##/code-section module-header
 
 #
 # Test-cases for class(es) Enquiry
@@ -41,15 +39,9 @@ from Products.EEAEnquiry.tests.EnquiryTestCase import EnquiryTestCase
 # Import the tested classes
 #from Products.EEAEnquiry.content.Enquiry import Enquiry
 
-##code-section module-beforeclass #fill in your manual code here
-##/code-section module-beforeclass
-
 
 class testEnquiry(EnquiryTestCase):
     """Test-cases for class(es) Enquiry."""
-
-    ##code-section class-header_testEnquiry #fill in your manual code here
-    ##/code-section class-header_testEnquiry
 
     def afterSetUp(self):
         pass
@@ -68,7 +60,7 @@ class testEnquiry(EnquiryTestCase):
 
         self.logout()
         eid = eFolder.invokeFactory(type_name='Enquiry', id="e1",
-                                   title="Enquiry 1", description="description enquiry 1")
+                                    title="Enquiry 1", description="description enquiry 1")
         en = getattr(eFolder, eid)
         self.failIf(en.getEnquiryRequestor() is not None)
 
@@ -85,8 +77,4 @@ def test_suite():
     suite = TestSuite()
     suite.addTest(makeSuite(testEnquiry))
     return suite
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
 
