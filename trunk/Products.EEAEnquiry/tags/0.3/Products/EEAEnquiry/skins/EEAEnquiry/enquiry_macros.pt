@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+   
+<body>
+
+<div metal:fill-slot="main">                                                    
+<metal:enquirySteps define-macro="steps">
+    <h1>Submit an enquiry</h1>
+    <div class="roundedBox lightBGC">
+        <h3>Quick links</h3>
+         <p> <a href="/organisation/jbs/"
+          tal:attributes="href string:${portal_url}/organisation/jbs">Vacancies</a>, 
+	<a href="/tenders" title="Tenders" >contract opportunities</a>, 
+        <a href="/documents/faqs" title="FAQ" >FAQ</a> and more can be found on the <a href="/help/infocentre/quicklinks">Enquiry Service - quick links page</a>.</p></div>
+    <dl class="wizard"  tal:define="defaultClass python:'';
+                           currentClass python:'currentStep'">
+         <dt tal:attributes="class python:test(currentStep == 1, currentClass, defaultClass)">1</dt>
+         <dd>Submit enquiry</dd>
+         <dt tal:attributes="class python:test(currentStep == 2, currentClass, defaultClass)">2</dt>
+	 <dd>Log-in for registered users</dd>
+         <dt tal:attributes="class python:test(currentStep == 3, currentClass, defaultClass)">3</dt>
+	 <dd>Confirm and send</dd>
+    </dl>
+    <div class="visualClear"></div>
+
+</metal:enquirySteps>
+
+<metal:enquiryFooter define-macro="footer">
+   <p>If you experience problems please contact <a href="/contact-info" title="Contact EEA Web Team">EEA Web team</a>.</p>
+</metal:enquiryFooter>
+</div>
+
+</body>
+</html>
