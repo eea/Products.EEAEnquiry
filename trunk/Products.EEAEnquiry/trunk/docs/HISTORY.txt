@@ -2,8 +2,8 @@ Changelog
 =========
 [David Ichim - david.ichim@eaudeweb.ro]
 
-0.3-dev - (unreleased)
-----------------------
+0.3 - (2011-05-20)
+------------------
  * Cleanup: of pyflakes compiler warnings [ichimdav #4141]
  * Cleanup: of pylint violations [ichimdav #4140]
  * Bug fix: Fixed DeprecationWarning: CMFCorePermissions [voineali #4139]
