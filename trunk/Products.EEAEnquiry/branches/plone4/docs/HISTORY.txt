@@ -1,20 +1,50 @@
 Changelog
 =========
-[David Ichim - david.ichim@eaudeweb.ro]
 
-0.3-dev - (unreleased)
+
+4.0-dev -(unreleased)
+---------------------
+
+* Bug fix: Fixed failing tests
+  [ichimdav #4339]
+
+* Bug fix: Fixed metadata fieldset that appeared on entry edit
+  [ichimdav #4335]
+
+* Feature: Added upgrade steps
+  [voineali #4392]
+
+* Feature: ported package to Plone 4.0.4
+  [tiberich #4314]
+
+
+0.3 - (unreleased)
 ----------------------
- * Cleanup: of pyflakes compiler warnings [ichimdav #4141]
- * Cleanup: of pylint violations [ichimdav #4140]
- * Bug fix: Fixed DeprecationWarning: CMFCorePermissions [voineali #4139]
- * Bug fix: Fixed DeprecationWarning: CustomizationPolicies [voineali #4139]
+
+* Cleanup: of pyflakes compiler warnings
+  [ichimdav #4141]
+
+* Cleanup: of pylint violations
+  [ichimdav #4140]
+
+* Bug fix: Fixed DeprecationWarning: CMFCorePermissions
+  [voineali #4139]
+
+* Bug fix: Fixed DeprecationWarning: CustomizationPolicies
+  [voineali #4139]
+
 
 0.2 - (2011-02-17)
 ------------------
- * Feature: Eggified product [ichimdav #2931]
- * Change: Changed wording for EEAEnquiry [ichimdav #3217]
+
+* Feature: Eggified product
+  [ichimdav #2931]
+
+* Change: Changed wording for EEAEnquiry
+  [ichimdav #3217]
+
 
 0.1 (2010-10-11)
 -------------------
- - Initial release
 
+* Initial release

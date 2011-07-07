@@ -10,13 +10,29 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
-    <!--<genericsetup:registerProfile-->
-        <!--name="testfixture"-->
-        <!--title="Products.EEAEnquiry test fixture"-->
-        <!--directory="profiles/testfixture"-->
-        <!--description="Test fixture profile for EEAEnquiry"-->
-        <!--provides="Products.GenericSetup.interfaces.EXTENSION"-->
-        <!--/>-->
+    <genericsetup:registerProfile
+        name="testfixture"
+        title="Products.EEAEnquiry test fixture"
+        directory="profiles/testfixture"
+        description="Test fixture profile for EEAEnquiry"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:importStep
+        name="eeaenquiry-types"
+        title="EEAEnquiry Types Cataloging"
+        description="Setting custom cataloging for types"
+        handler="Products.EEAEnquiry.setuphandlers.installTypesCatalog">
+        <depends name="typeinfo"/>
+    </genericsetup:importStep>
+
+    <genericsetup:importStep
+        name="eeaenquiry-catalog"
+        title="EEAEnquiry catalog tool indexes"
+        description="Setting cataloging indexes for types"
+        handler="Products.EEAEnquiry.setuphandlers.installCatalogIndexes">
+        <depends name="toolset"/>
+    </genericsetup:importStep>
 
 </configure>
 

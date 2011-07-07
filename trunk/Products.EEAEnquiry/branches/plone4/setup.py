@@ -31,7 +31,7 @@ setup(
      "setuptools",
 
      "Products.ATVocabularyManager",
-     #"Products.EEAPloneAdmin",  #has the necessary workflows
+     "Products.EEAPloneAdmin",  #has the necessary workflows
 
  ],
  entry_points="""

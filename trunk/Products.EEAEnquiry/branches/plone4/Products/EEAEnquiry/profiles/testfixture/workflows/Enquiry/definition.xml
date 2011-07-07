@@ -93,8 +93,9 @@
   <guard>
   </guard>
  </variable>
- TODO: Disabled for testing, should probably re-enable
- <!--<script script_id="sendToIC" type="External Method"-->
-         <!--filename="" module="EEAEnquiry.Enquiry_scripts"-->
-         <!--function="sendToIC"/>-->
+
+ <script script_id="sendToIC" type="External Method"
+         filename=""
+         module="Products.EEAPloneAdmin.Enquiry_scripts"
+         function="sendToIC"/>
 </dc-workflow>

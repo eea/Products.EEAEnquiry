@@ -32,12 +32,7 @@ __docformat__ = 'plaintext'
 # Test-cases for class(es) Enquiry
 #
 
-#from Testing import ZopeTestCase
-#from Products.EEAEnquiry.config import *
 from Products.EEAEnquiry.tests.EnquiryTestCase import EnquiryTestCase
-
-# Import the tested classes
-#from Products.EEAEnquiry.content.Enquiry import Enquiry
 
 
 class testEnquiry(EnquiryTestCase):
@@ -57,8 +52,8 @@ class testEnquiry(EnquiryTestCase):
         eid = eFolder.invokeFactory(type_name='EnquiryRequestorFolder', id="requestors",
                                 title='Requestors for EEA' )
         eReqFolder = getattr(eFolder, eid)
-
         self.logout()
+        
         eid = eFolder.invokeFactory(type_name='Enquiry', id="e1",
                                     title="Enquiry 1", description="description enquiry 1")
         en = getattr(eFolder, eid)

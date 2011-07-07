@@ -32,8 +32,6 @@ __docformat__ = 'plaintext'
 #
 
 
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.GenericSetup import EXTENSION, profile_registry
 from Products.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.layer import onsetup
 from Testing import ZopeTestCase as ztc
@@ -55,16 +53,8 @@ ztc.installProduct('EEAEnquiry')
 def setup_site():
     """ Set up
     """
+    pass
 
-    profile_registry.registerProfile(
-                        name='testfixture',
-                        title='EEAEnquiry test fixtures',
-                        description='Extension profile for testing EEAEnquiry',
-                        path='profile/testfixture',
-                        product='Products.EEAEnquiry',
-                        profile_type=EXTENSION,
-                        for_=IPloneSiteRoot
-                    )
 
 
 setup_site()
