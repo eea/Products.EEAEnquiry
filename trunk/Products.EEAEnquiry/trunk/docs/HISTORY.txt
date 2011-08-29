@@ -2,6 +2,9 @@ Changelog
 =========
 [David Ichim - david.ichim@eaudeweb.ro]
 
+0.5-dev - (unreleased)
+----------------------
+
 0.4 - (2011-08-29)
 ------------------
  * Change: createEnquiry is now a page template that uses JS to redirect to new enquiry.
