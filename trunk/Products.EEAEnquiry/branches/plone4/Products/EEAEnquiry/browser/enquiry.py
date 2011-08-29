@@ -23,6 +23,7 @@ def ownerOfObject(obj):
     return user
 
 
+#TODO: this is deprecated, not needed anymre
 class BrowserView(FiveBrowserView):
 
     def _getContext(self):

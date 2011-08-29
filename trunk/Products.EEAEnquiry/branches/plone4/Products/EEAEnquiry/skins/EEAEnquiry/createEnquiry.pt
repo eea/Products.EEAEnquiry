@@ -1,0 +1,7 @@
+<p>Please wait, redirecting.</p>
+
+<script>
+  var base = document.URL.slice(0, document.URL.lastIndexOf('/') + 1);
+  var new_location = base + '/createObject?type_name=Enquiry';
+  document.location = new_location;
+</script>

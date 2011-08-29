@@ -4,6 +4,8 @@ Changelog
 
 4.0-dev -(unreleased)
 ---------------------
+* Feature: use a separate page for createEnquiry, avoids a redirect and avoids spam bots
+  [tiberich #2802]
 
 * Bug fix: Fixed failing tests
   [ichimdav #4339]
