@@ -4,7 +4,7 @@
 
     <genericsetup:registerProfile
         name="default"
-        title="Products.EEAEnquiry"
+        title="EEA Enquiry"
         directory="profiles/default"
         description="Extension profile for EEAEnquiry"
         provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -12,7 +12,7 @@
 
     <genericsetup:registerProfile
         name="testfixture"
-        title="Products.EEAEnquiry test fixture"
+        title="EEA Enquiry test fixture"
         directory="profiles/testfixture"
         description="Test fixture profile for EEAEnquiry"
         provides="Products.GenericSetup.interfaces.EXTENSION"
