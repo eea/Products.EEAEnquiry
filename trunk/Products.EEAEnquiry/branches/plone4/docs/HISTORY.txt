@@ -4,6 +4,8 @@ Changelog
 
 4.0-dev -(unreleased)
 ---------------------
+* Change: Migrated enquiry_macros from custom [szabozo0 #4161]
+
 * Feature: use a separate page for createEnquiry, avoids a redirect and avoids spam bots
   [tiberich #2802]
 
