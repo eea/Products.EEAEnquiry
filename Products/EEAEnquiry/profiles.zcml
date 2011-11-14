@@ -1,0 +1,40 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="eea">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="EEA Enquiry"
+        directory="profiles/default"
+        description="Extension profile for EEAEnquiry"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:registerProfile
+        name="testfixture"
+        title="EEA Enquiry test fixture"
+        directory="profiles/testfixture"
+        description="Test fixture profile for EEAEnquiry"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:importStep
+        name="eeaenquiry-types"
+        title="EEAEnquiry Types Cataloging"
+        description="Setting custom cataloging for types"
+        handler="Products.EEAEnquiry.setuphandlers.installTypesCatalog">
+        <depends name="typeinfo"/>
+    </genericsetup:importStep>
+
+    <genericsetup:importStep
+        name="eeaenquiry-catalog"
+        title="EEAEnquiry catalog tool indexes"
+        description="Setting cataloging indexes for types"
+        handler="Products.EEAEnquiry.setuphandlers.installCatalogIndexes">
+        <depends name="toolset"/>
+    </genericsetup:importStep>
+
+</configure>
+
+
+
