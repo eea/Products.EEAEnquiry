@@ -1,31 +1,23 @@
 """ Initialize
 """
-
 from Products.Archetypes import atapi
 from Products.Archetypes import listTypes
 from Products.CMFCore import utils as cmfutils
 from Products.EEAEnquiry import config
 import logging
-
-
 logger = logging.getLogger('Products.EEAEnquiry')
-
-#from Products.CMFCore import DirectoryView
-#DirectoryView.registerDirectory('skins', config.product_globals)
-#DirectoryView.registerDirectory('skins/EEAEnquiry',
-                                    #config.product_globals)
 
 def initialize(context):
     """ Zope 2
     """
-    from tools import catalog
+    from Products.EEAEnquiry.tools import catalog
 
     cmfutils.ToolInit('Enquiry Tool'
              , tools=( catalog.EnquiryCatalog,  )
              , icon='tool.gif'
              ).initialize( context )
 
-    import content
+    from Products.EEAEnquiry import content
     content.register_content()
 
     # Initialize portal content

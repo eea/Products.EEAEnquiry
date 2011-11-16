@@ -1,3 +1,5 @@
+""" Interfaces
+"""
 import zope.interface
 
 class IEnquiry(zope.interface.Interface):
@@ -5,7 +7,3 @@ class IEnquiry(zope.interface.Interface):
 
 class IEnquiryRequestor(zope.interface.Interface):
     """ EnquiryRequestor marker interface """
-
-
-    
-    
