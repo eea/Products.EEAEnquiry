@@ -1,17 +1,18 @@
+""" Various setup
+"""
 from Products.Archetypes.config import TOOL_NAME as ARCHETYPETOOLNAME
 from Products.CMFCore.utils import getToolByName
 from Products.PluginIndexes.FieldIndex.FieldIndex import FieldIndex
-from Products.ZCTextIndex.ZCTextIndex import ZCTextIndex
-from Products.ZCTextIndex.OkapiIndex import OkapiIndex
 import logging
 
 logger = logging.getLogger("Products.EEAEnquiry.setuphandlers")
 
 
 def installTypesCatalog(context):
-    # Configure CatalogMultiplex:
-    # explicit add classes (meta_types) be indexed in catalogs (white)
-    # or removed from indexing in a catalog (black)
+    """ Configure CatalogMultiplex:
+        explicit add classes (meta_types) be indexed in catalogs (white)
+        or removed from indexing in a catalog (black)
+    """
 
     if context.readDataFile('Products.EEAEnquiry.txt') is None:
         return
@@ -27,11 +28,13 @@ def installTypesCatalog(context):
     catalogmap['EnquiryRequestor']['black'] = ['portal_catalog']
     for meta_type in catalogmap:
         submap = catalogmap[meta_type]
-        current_catalogs = set([c.id for c in atool.getCatalogsByType(meta_type)])
+        current_catalogs = set([c.id for
+                                c in atool.getCatalogsByType(meta_type)])
         if 'white' in submap:
             for catalog in submap['white']:
                 if not getToolByName(site, catalog, False):
-                    raise AttributeError, 'Catalog "%s" does not exist!' % catalog
+                    raise AttributeError(
+                        'Catalog "%s" does not exist!' % catalog)
                 current_catalogs.update([catalog])
         if 'black' in submap:
             for catalog in submap['black']:
@@ -62,10 +65,12 @@ def switchPathIndex(context):
         catalog.addIndex('path', 'ExtendedPathIndex')
         logger.info("Added ExtendedPathIndex 'path' to portal_catalog.")
 
-        #TODO: plone4, if this is still needed, then catalog reindexing is needed
+        #TODO: If this is still needed, then catalog reindexing is needed
 
 
 def installCatalogIndexes(context):
+    """ Catalog indexes
+    """
     if context.readDataFile('Products.EEAEnquiry.txt') is None:
         return
 
@@ -73,13 +78,14 @@ def installCatalogIndexes(context):
     catalog = getToolByName(portal, 'portal_enquiry_catalog')
 
     try:
-        index = catalog._catalog.getIndex('portal_type')
-        index = catalog._catalog.getIndex('Title')
+        catalog._catalog.getIndex('portal_type')
+        catalog._catalog.getIndex('Title')
     except KeyError:
         logger.info("Adding indexes to catalog")
-        fieldindex = FieldIndex("portal_type")
+        FieldIndex("portal_type")
 
         class Empty:
+            """ Empty """
             pass
 
         elem = []
@@ -99,7 +105,8 @@ def installCatalogIndexes(context):
         elem.append(wordSplitter)
         elem.append(caseNormalizer)
         elem.append(stopWords)
-        catalog.manage_addProduct['ZCTextIndex'].manage_addLexicon('plone_lexicon', 'Default Lexicon', elem)
+        catalog.manage_addProduct['ZCTextIndex'].manage_addLexicon(
+            'plone_lexicon', 'Default Lexicon', elem)
 
         title_extras = Empty()
         title_extras.doc_attr = 'Title'

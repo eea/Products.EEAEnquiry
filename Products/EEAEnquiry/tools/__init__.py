@@ -1,2 +1,4 @@
-import catalog
-catalog.register_catalog() #pyflakes
+""" Tools
+"""
+from Products.EEAEnquiry.tools import catalog
+catalog.register_catalog()
