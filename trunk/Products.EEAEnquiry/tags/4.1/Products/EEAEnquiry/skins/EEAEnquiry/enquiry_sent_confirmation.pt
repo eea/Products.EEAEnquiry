@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+    <metal:block fill-slot="top_slot"
+                 tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+
+<div metal:fill-slot="main">
+
+    <h1 i18n:translate="heading_enquiry_sent">Enquiry sent</h1>
+
+    <div>
+        <p i18n:translate="description_sent_password">
+Thank you for your enquiry. To make sure that it has been submitted successfully, an auto reply confirmation will be sent to you. Hereafter, the EEA Enquiry Service will send you a more specific response, as soon as possible.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
