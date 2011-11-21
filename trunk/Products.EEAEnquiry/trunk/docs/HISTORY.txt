@@ -1,10 +1,10 @@
 Changelog
 =========
 
-4.2-dev - (unreleased)
-----------------------
+4.2 - (2011-11-21)
+------------------
  * Bug fix: Forced EnquiryFolder to be folderish [szabozo0 #4735]
- 
+
 4.1 - (2011-11-18)
 ------------------
  * Rerelease broken egg
