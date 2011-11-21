@@ -3,7 +3,8 @@ Changelog
 
 4.2-dev - (unreleased)
 ----------------------
-
+ * Bug fix: Forced EnquiryFolder to be folderish [szabozo0 #4735]
+ 
 4.1 - (2011-11-18)
 ------------------
  * Rerelease broken egg
