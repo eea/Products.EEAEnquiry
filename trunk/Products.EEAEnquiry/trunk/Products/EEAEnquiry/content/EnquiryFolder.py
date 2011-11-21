@@ -27,6 +27,10 @@ class EnquiryFolder(ATBTreeFolder):
         """
         return []
 
+    def is_folderish(self):
+        """ EnquiryFolder is folderish
+        """
+        return True
 
 def register():
     """ Register
