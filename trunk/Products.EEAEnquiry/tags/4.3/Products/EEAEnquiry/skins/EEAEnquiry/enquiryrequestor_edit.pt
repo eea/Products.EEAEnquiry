@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+<body>
+
+<div metal:fill-slot="main">
+    <metal:header define-macro="header"
+                  tal:define="currentStep python:3">
+         <metal:stepWizard use-macro="here/enquiry_macros/macros/steps" />
+    </metal:header>
+
+    <div metal:define-macro="typedescription">
+    </div>
+
+    <metal:body define-macro="body">
+     <metal:body use-macro="here/edit_macros/macros/body">
+         <metal:buttons fill-slot="buttons">
+                <input class="context"
+                       type="submit"
+                       name="form_submit"
+                       value="Confirm and send"
+                       i18n:attributes="value label_confirm_and_send;"
+                       />
+         </metal:buttons>
+     </metal:body>
+    </metal:body>
+
+    <metal:footer define-macro="footer"
+                  tal:define="enquiry here/@@unsent_enquiry"
+          tal:condition="python:test(enquiry != None, True, False)">
+         <h2>Your Enquiry</h2>
+     <h3 tal:content="enquiry/Title">Subject</h3>
+     <p tal:content="enquiry/Description"></p>
+    </metal:footer>
+</div>
+
+</body>
+</html>
