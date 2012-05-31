@@ -3,14 +3,18 @@ Changelog
 
 4.4-dev - (unreleased)
 ----------------------
+* Bug fix: fixed markup of HISTORY.txt file
+  [ciobabog refs #5231]
 
 4.3 - (2012-01-19)
 ------------------
- * Feature: changed options for Occupation dropdown for Enquiry [tiberich #4894] 
+* Feature: changed options for Occupation dropdown for Enquiry
+  [tiberich #4894] 
 
 4.2 - (2011-11-21)
 ------------------
- * Bug fix: Forced EnquiryFolder to be folderish [szabozo0 #4735]
+* Bug fix: Forced EnquiryFolder to be folderish
+  [szabozo0 #4735]
 
 4.1 - (2011-11-18)
 ------------------
@@ -18,7 +22,8 @@ Changelog
 
 4.0 - (2011-11-18)
 ------------------
-* Change: Migrated enquiry_macros from custom [szabozo0 #4161]
+* Change: Migrated enquiry_macros from custom
+  [szabozo0 #4161]
 * Feature: use a separate page for createEnquiry, avoids a redirect and avoids spam bots
   [tiberich #2802]
 * Bug fix: Fixed failing tests
