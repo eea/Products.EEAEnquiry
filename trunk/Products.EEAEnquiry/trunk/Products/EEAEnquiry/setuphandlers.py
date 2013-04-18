@@ -60,7 +60,7 @@ def switchPathIndex(context):
             if indextype == 'ExtendedPathIndex':
                 return
             catalog.delIndex('path')
-            logger.info("Deleted %s 'path' from portal_catalog." % indextype)
+            logger.info("Deleted %s 'path' from portal_catalog.", indextype)
 
         catalog.addIndex('path', 'ExtendedPathIndex')
         logger.info("Added ExtendedPathIndex 'path' to portal_catalog.")
