@@ -3,6 +3,8 @@ Changelog
 
 4.5-dev - (unreleased)
 ----------------------
+* Change: Removed dependency to eea.rdfrepository
+  [szabozo0 refs #14323]
 
 4.4 - (2012-07-13)
 ------------------
