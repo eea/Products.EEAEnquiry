@@ -1,0 +1,64 @@
+Changelog
+=========
+
+4.5 - (2013-08-09)
+------------------
+* Change: Removed dependency to eea.rdfrepository
+  [szabozo0 refs #14323]
+
+4.4 - (2012-07-13)
+------------------
+* Bug fix: fixed markup of HISTORY.txt file
+  [ciobabog refs #5231]
+
+4.3 - (2012-01-19)
+------------------
+* Feature: changed options for Occupation dropdown for Enquiry
+  [tiberich #4894] 
+
+4.2 - (2011-11-21)
+------------------
+* Bug fix: Forced EnquiryFolder to be folderish
+  [szabozo0 #4735]
+
+4.1 - (2011-11-18)
+------------------
+ * Rerelease broken egg
+
+4.0 - (2011-11-18)
+------------------
+* Change: Migrated enquiry_macros from custom
+  [szabozo0 #4161]
+* Feature: use a separate page for createEnquiry, avoids a redirect and avoids spam bots
+  [tiberich #2802]
+* Bug fix: Fixed failing tests
+  [ichimdav #4339]
+* Bug fix: Fixed metadata fieldset that appeared on entry edit
+  [ichimdav #4335]
+* Feature: Added upgrade steps
+  [voineali #4392]
+* Feature: ported package to Plone 4.0.4
+  [tiberich #4314]
+
+0.3 - (unreleased)
+----------------------
+* Cleanup: of pyflakes compiler warnings
+  [ichimdav #4141]
+* Cleanup: of pylint violations
+  [ichimdav #4140]
+* Bug fix: Fixed DeprecationWarning: CMFCorePermissions
+  [voineali #4139]
+* Bug fix: Fixed DeprecationWarning: CustomizationPolicies
+  [voineali #4139]
+
+0.2 - (2011-02-17)
+------------------
+* Feature: Eggified product
+  [ichimdav #2931]
+* Change: Changed wording for EEAEnquiry
+  [ichimdav #3217]
+
+0.1 (2010-10-11)
+-------------------
+* Initial release
+
