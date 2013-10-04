@@ -17,7 +17,7 @@ Changelog
 4.3 - (2012-01-19)
 ------------------
 * Feature: changed options for Occupation dropdown for Enquiry
-  [tiberich #4894] 
+  [tiberich #4894]
 
 4.2 - (2011-11-21)
 ------------------
