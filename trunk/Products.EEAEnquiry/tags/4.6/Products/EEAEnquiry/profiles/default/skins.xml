@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+
+    <object name="EEAEnquiry"
+        meta_type="Filesystem Directory View"
+        directory="Products.EEAEnquiry:skins/EEAEnquiry"/>
+
+    <skin-path name="*">
+        <layer insert-after="custom" name="EEAEnquiry"/>
+    </skin-path>
+
+</object>
+

@@ -1,0 +1,69 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five">
+
+    <browser:page 
+        for="Products.EEAEnquiry.content.interfaces.IEnquiry"
+        name="checkErrors"
+        class=".enquiry.SubmitEnquiry"
+        permission="zope.Public"
+        attribute="getErrors"
+        />
+
+    <browser:page 
+        for="Products.EEAEnquiry.content.interfaces.IEnquiry"
+        name="enquiryStep2"
+        class=".enquiry.SubmitEnquiry"
+        permission="zope.Public"
+        attribute="enquiryStep2"
+        />
+
+    <browser:page 
+        for="Products.EEAEnquiry.content.interfaces.IEnquiryRequestor"
+        name="canViewEnquiryRequestor"
+        class=".enquiry.EnquiryRequestor"
+        permission="zope.Public"
+        attribute="canView"
+        />
+
+    <browser:page 
+        for="*"
+        name="getUserInformation"
+        class=".enquiry.EnquiryRequestor"
+        permission="zope.Public"
+        attribute="getUserInfo"
+        />
+
+    <browser:page 
+        for="*"
+        name="getUserInfo"
+        class=".enquiry.EnquiryRequestor"
+        permission="zope.Public"
+        attribute="getUserInfo"
+        />
+
+    <browser:page 
+        for="Products.EEAEnquiry.content.interfaces.IEnquiryRequestor"
+        name="unsent_enquiry"
+        class=".enquiry.EnquiryRequestor"
+        permission="zope.Public"
+        attribute="getUnsentEnquiry"
+        />
+
+    <browser:page 
+        for="Products.EEAEnquiry.content.interfaces.IEnquiryRequestor"
+        name="sendEnquiry"
+        class=".enquiry.SendEnquiry"
+        permission="zope.Public"
+        attribute="sendUnsentEnquiries"
+        />
+
+    <browser:page 
+        for="Products.EEAEnquiry.content.interfaces.IEnquiryRequestor"
+        name="subscribePG"
+        class=".enquiry.SendEnquiry"
+        permission="zope.Public"
+        attribute="subscribePloneGazette"
+        />
+
+</configure>
