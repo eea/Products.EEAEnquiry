@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+  lang="en"
+  metal:use-macro="here/main_template/macros/master"
+  i18n:domain="plone">
+
+  <body>
+
+    <div metal:fill-slot="main">
+      <metal:header define-macro="header"
+        tal:define="currentStep python:2">
+        <metal:stepWizard use-macro="here/enquiry_macros/macros/steps" />
+      </metal:header>
+      <metal:body define-macro="body">
+
+        <tal:login define="enquiry request/enquiry|nothing;
+          email request/email|here/getEmail|nothing;
+          errors here/@@checkErrors;
+          view here/@@enquiryStep2;">
+          <form tal:attributes="action python:context.absolute_url() + '/' + 'base_view'"
+            method="post"
+            id="enquiry_login_form">
+
+            <fieldset>
+              <legend>Already registered</legend>
+
+              <input type="hidden"
+                name="enquiry"
+                value=""
+                tal:attributes="value enquiry" />
+
+              <div class="field"
+                tal:define="error python:errors.get('email', None);"
+                tal:attributes="class python:test(error, 'field error', 'field')">
+
+                <label tal:attributes="for email">Email</label>
+
+                <div i18n:translate="help_enquiry_email"
+                  class="formHelp">
+                  If you have forgotten your password just enter your email and press
+                  <input class="context"
+                    type="submit"
+                    name="mailpassword"
+                    value="Please send my password"
+                    i18n:attributes="value label_please_send_my_password;"
+                    />
+
+                </div>
+
+                <div tal:content="error">Validation error output</div>
+
+                <input type="text"
+                  size="15"
+                  name="email"
+                  id="email"
+                  tal:attributes="value email|nothing;"
+                  />
+
+              </div>
+
+              <div class="field"
+                tal:define="error python:errors.get('password', None);"
+                tal:attributes="class python:test(error, 'field error', 'field')">
+
+                <label i18n:translate="label_password"
+                  for="password">Password</label>
+
+                <div class="formHelp">
+                  <div i18n:translate="help_capslock_password">
+                    Case sensitive, make sure caps lock is not enabled.
+                  </div>
+                </div>
+
+                <div tal:content="error">Validation error output</div>
+
+                <input type="password" name="password" id="password"
+                  size="15"
+                  />
+              </div>
+
+              <div class="formControls">
+
+                <input class="context"
+                  type="submit"
+                  name="login"
+                  value="Log in"
+                  i18n:attributes="value label_log_in;"
+                  />
+
+              </div>
+
+            </fieldset>
+          </form>
+        </tal:login>
+      </metal:body>
+
+      <metal:footer define-macro="folderlisting"></metal:footer>
+    </div>
+
+  </body>
+</html>
