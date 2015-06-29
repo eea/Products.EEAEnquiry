@@ -84,7 +84,7 @@ def installCatalogIndexes(context):
         logger.info("Adding indexes to catalog")
         FieldIndex("portal_type")
 
-        class Empty:
+        class Empty(object):
             """ Empty """
             pass
 

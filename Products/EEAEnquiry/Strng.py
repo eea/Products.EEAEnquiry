@@ -3,7 +3,7 @@
 
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import (
-        Schema, BaseSchema, BaseContent, registerType )
+        Schema, BaseSchema, BaseContent, registerType)
 from Products.EEAEnquiry.config import PROJECTNAME
 
 schema = Schema((

@@ -108,8 +108,8 @@ class SubmitEnquiry(BrowserView):
         errors = {}
         context = self.context
         if self.request.get('login', None) is not None:
-            email = self.request.get('email' , '')
-            password = self.request.get('password' , '')
+            email = self.request.get('email', '')
+            password = self.request.get('password', '')
             if email == '':
                 errors['email'] = 'Please enter your email address.'
             if password == '':
@@ -135,7 +135,7 @@ class SubmitEnquiry(BrowserView):
         context = self.context
         enquiry = context.UID()
         email = context.getEmail()
-        password = self.request.get('password' , '')
+        password = self.request.get('password', '')
         cat = getToolByName(context, 'portal_enquiry_catalog')
         requestors = cat.searchResults(
                 portal_type='EnquiryRequestor',
@@ -232,12 +232,12 @@ class EnquiryRequestor(BrowserView):
         if 'Manager' in mb.getAuthenticatedMember().getRoles():
             return True
 
-        email = self.request.get('email' , None)
-        password = self.request.get('password' , None)
+        email = self.request.get('email', None)
+        password = self.request.get('password', None)
         if context.getPassword() == password and context.Title() == email:
             return True
 
-        enquiry = self.request.get('enquiry' , '')
+        enquiry = self.request.get('enquiry', '')
         for enq in context.getEnquiries():
             if enq.UID() == enquiry:
                 return True
@@ -276,6 +276,6 @@ class EnquiryRequestor(BrowserView):
                      'ORGANISATION': user.getOrg(),
                      'GENDER': user.getSex() == 'Mr' and 1 or 0,
                      'FIRSTNAME': user.getFirstname(),
-                     'CITY': user.getCity() })
+                     'CITY': user.getCity()})
 
         return ('InvalidUser', 'No such user')
