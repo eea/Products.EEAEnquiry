@@ -16,11 +16,11 @@ class testEnquiry(EnquiryTestCase):
         self.setRoles('Manager')
         root = self.portal
         eid = root.invokeFactory(type_name='EnquiryFolder', id="enquiry",
-                                title='Enquiries for EEA' )
+                                title='Enquiries for EEA')
         eFolder = getattr(root, eid)
         eid = eFolder.invokeFactory(
             type_name='EnquiryRequestorFolder', id="requestors",
-            title='Requestors for EEA' )
+            title='Requestors for EEA')
         eReqFolder = getattr(eFolder, eid)
         self.logout()
 

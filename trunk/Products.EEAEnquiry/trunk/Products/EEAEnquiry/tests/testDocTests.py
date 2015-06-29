@@ -8,7 +8,7 @@ from Testing.ZopeTestCase import ZopeDocTestSuite
 
 from Products.EEAEnquiry.tests import EnquiryTestCase
 
-optionflags =  (doctest.ELLIPSIS |
+optionflags = (doctest.ELLIPSIS |
                 doctest.NORMALIZE_WHITESPACE |
                 doctest.REPORT_ONLY_FIRST_FAILURE)
 

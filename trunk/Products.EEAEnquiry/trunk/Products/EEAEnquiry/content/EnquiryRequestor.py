@@ -14,7 +14,7 @@ from Products.validation.validators import ExpressionValidator
 from Products.EEAEnquiry.content.interfaces import IEnquiryRequestor
 from zope.interface import implements
 
-class UniqueRequestorValidator:
+class UniqueRequestorValidator(object):
     """ Validator
     """
     implements(IValidator)
@@ -54,7 +54,7 @@ schema = Schema((
         name='password',
         widget=PasswordWidget
         (
-            visible={'view' : 'invisible' },
+            visible={'view' : 'invisible'},
             description=("Please enter a password if you want to save "
                          "the information for future enquiries."),
             label='Password',

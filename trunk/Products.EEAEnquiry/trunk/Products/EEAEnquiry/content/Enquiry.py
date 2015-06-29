@@ -28,7 +28,7 @@ schema = Schema((
         vocabulary=['Please select',
             'Company', 'Government official / international organisation',
             'Information centre / library / bookstore', 'Journalist',
-            'Media', 'Interest Group/NGO', 'Politician', 'Researcher', 
+            'Media', 'Interest Group/NGO', 'Politician', 'Researcher',
             'Student', 'Citizen',
             'Teacher (primary, secondary and tertiary)', 'N/A']
     ),

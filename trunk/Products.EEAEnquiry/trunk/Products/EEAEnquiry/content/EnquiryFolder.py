@@ -16,8 +16,8 @@ class EnquiryFolder(ATBTreeFolder):
     """
     security = ClassSecurityInfo()
     archetype_name = 'EnquiryFolder'
-    meta_type      = 'EnquiryFolder'
-    portal_type    = 'EnquiryFolder'
+    meta_type = 'EnquiryFolder'
+    portal_type = 'EnquiryFolder'
     _at_rename_after_creation = True
     schema = EnquiryFolder_schema
 

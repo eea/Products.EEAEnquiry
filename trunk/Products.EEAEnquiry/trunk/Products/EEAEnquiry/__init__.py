@@ -13,9 +13,9 @@ def initialize(context):
     from Products.EEAEnquiry.tools import catalog
 
     cmfutils.ToolInit('Enquiry Tool'
-             , tools=( catalog.EnquiryCatalog,  )
+             , tools=(catalog.EnquiryCatalog, )
              , icon='tool.gif'
-             ).initialize( context )
+             ).initialize(context)
 
     from Products.EEAEnquiry import content
     content.register_content()
@@ -27,10 +27,10 @@ def initialize(context):
 
     cmfutils.ContentInit(
         config.PROJECTNAME + ' Content',
-        content_types      = all_content_types,
-        permission         = config.DEFAULT_ADD_CONTENT_PERMISSION,
-        extra_constructors = all_constructors,
-        fti                = all_ftis,
+        content_types=all_content_types,
+        permission=config.DEFAULT_ADD_CONTENT_PERMISSION,
+        extra_constructors=all_constructors,
+        fti=all_ftis,
         ).initialize(context)
 
     # Give it some extra permissions to control them on a per class limit
@@ -40,6 +40,6 @@ def initialize(context):
             continue
 
         context.registerClass(
-            meta_type   = all_ftis[i]['meta_type'],
-            constructors= (all_constructors[i],),
-            permission  = config.ADD_CONTENT_PERMISSIONS[klassname])
+            meta_type=all_ftis[i]['meta_type'],
+            constructors=(all_constructors[i],),
+            permission=config.ADD_CONTENT_PERMISSIONS[klassname])
