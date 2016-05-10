@@ -1,11 +1,14 @@
 """ Initialize
 """
+import logging
+
 from Products.Archetypes import atapi
 from Products.Archetypes import listTypes
 from Products.CMFCore import utils as cmfutils
 from Products.EEAEnquiry import config
-import logging
+
 logger = logging.getLogger('Products.EEAEnquiry')
+
 
 def initialize(context):
     """ Zope 2

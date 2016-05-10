@@ -1,7 +1,7 @@
 """ setup.py """
 
-from setuptools import setup, find_packages
 import os
+from setuptools import setup, find_packages
 
 name = 'Products.EEAEnquiry'
 path = name.split('.') + ['version.txt']
