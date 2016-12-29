@@ -3,6 +3,8 @@ Changelog
 
 4.9.dev0 - (unreleased)
 -----------------------
+* Change: avoid Unauthorized error when editing a translation
+  [ichim-david refs #80053]
 
 4.8 - (2016-05-19)
 ------------------
