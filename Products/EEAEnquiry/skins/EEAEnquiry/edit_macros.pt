@@ -11,7 +11,7 @@
     <div metal:define-macro="header" tal:define="checkPermission nocall: context/portal_membership/checkPermission;">
       <metal:block define-slot="title">
         <h1 i18n:translate="heading_add_item" class="documentFirstHeading"
-            tal:condition="python:context.checkCreationFlag() if checkPermission('Add portal content', here)">
+            tal:condition="python:context.checkCreationFlag() if checkPermission('Add portal content', here) else False">
           Add
           <span i18n:name="itemtype"
                 tal:define="fti python:context.portal_types.getTypeInfo(here)">
@@ -21,7 +21,7 @@
           </span>
         </h1>
         <h1 i18n:translate="heading_edit_item" class="documentFirstHeading"
-            tal:condition="python: not context.checkCreationFlag() if checkPermission('Copy or Move', here)">
+            tal:condition="python: not context.checkCreationFlag() if checkPermission('Copy or Move', here) else False">
           Edit
           <span i18n:name="itemtype"
                 tal:define="fti python:context.portal_types.getTypeInfo(here)">
