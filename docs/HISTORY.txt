@@ -1,6 +1,9 @@
 Changelog
 =========
 
+5.0.dev0 - (unreleased)
+-----------------------
+
 4.9 - (2017-01-17)
 ------------------
 * Change: avoid Unauthorized error when editing a translation
