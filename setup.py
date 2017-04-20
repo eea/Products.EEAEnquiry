@@ -30,7 +30,7 @@ setup(
  keywords='EEA Enquiry Add-ons Plone Zope',
  author='European Environment Agency: IDM2 A-Team',
  author_email='eea-edw-a-team-alerts@googlegroups.com',
- url="https://github.com/eea/Products.EEAEnquiry",
+ url='https://github.com/eea/Products.EEAEnquiry',
  license='GPL',
  packages=find_packages(exclude=['ez_setup']),
  namespace_packages=['Products'],
