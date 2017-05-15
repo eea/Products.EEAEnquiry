@@ -46,4 +46,3 @@ def test_suite():
     suite = TestSuite()
     suite.addTest(makeSuite(testEnquiry))
     return suite
-

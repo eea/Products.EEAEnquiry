@@ -1,15 +1,15 @@
 """ Enquiry
 """
 from AccessControl import ClassSecurityInfo
+from Products.EEAEnquiry.config import PROJECTNAME
+from Products.validation.validators import ExpressionValidator
+from Products.EEAEnquiry.content.interfaces import IEnquiry
 from Products.Archetypes.atapi import (
         Schema, StringField, SelectionWidget, TextField, TextAreaWidget,
         ReferenceField, ReferenceWidget, BaseSchema, BaseContent,
         registerType, StringWidget
 )
 import transaction
-from Products.EEAEnquiry.config import PROJECTNAME
-from Products.validation.validators import ExpressionValidator
-from Products.EEAEnquiry.content.interfaces import IEnquiry
 import zope.interface
 
 

@@ -1,11 +1,10 @@
 """ Base TestCase for EEAEnquiry
 """
 
-
+import logging
 from Products.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.layer import onsetup
 from Testing import ZopeTestCase as ztc
-import logging
 logger = logging.getLogger("Products.EEAEnquiry.tests.EnquiryTestCase")
 
 
@@ -39,4 +38,3 @@ def test_suite():
     suite = TestSuite()
     suite.addTest(makeSuite(EnquiryTestCase))
     return suite
-

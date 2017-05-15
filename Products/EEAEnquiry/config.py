@@ -12,4 +12,3 @@ ADD_CONTENT_PERMISSIONS = {
 }
 
 product_globals = globals()
-

@@ -1,9 +1,9 @@
 """ Various setup
 """
+import logging
 from Products.Archetypes.config import TOOL_NAME as ARCHETYPETOOLNAME
 from Products.CMFCore.utils import getToolByName
 from Products.PluginIndexes.FieldIndex.FieldIndex import FieldIndex
-import logging
 
 logger = logging.getLogger("Products.EEAEnquiry.setuphandlers")
 
@@ -118,4 +118,3 @@ def installCatalogIndexes(context):
 
         catalog.addColumn('portal_type')
         catalog.addColumn('Title')
-

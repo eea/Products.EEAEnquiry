@@ -47,4 +47,3 @@ setup(
  # -*- Entry points: -*-
  """,
  )
-
