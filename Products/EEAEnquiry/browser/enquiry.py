@@ -22,7 +22,7 @@ def ownerOfObject(obj):
     return user
 
 
-#TODO: this is deprecated, not needed anymre
+# NOTE: this is deprecated, not needed anymre
 class BrowserView(FiveBrowserView):
     """ View
     """
@@ -64,7 +64,7 @@ class SendEnquiry(BrowserView):
         newsletter_themes = cat.searchResults(portal_type='NewsletterTheme')
 
         for nt in newsletter_themes:
-            #TODO: to be setup for multiple 'NewsletterTheme' instances case
+            # NOTE: to be setup for multiple 'NewsletterTheme' instances case
             nt_ob = nt.getObject()
             nt_subscriber = None
 
@@ -142,7 +142,7 @@ class SubmitEnquiry(BrowserView):
                 Title=email
                 )
 
-        if len(requestors) == 0:
+        if not requestors:
             folder = context.aq_inner.aq_parent.objectValues(
                 'EnquiryRequestorFolder')[0]
             reqObj = getattr(folder, enquiry)
@@ -168,7 +168,7 @@ class SubmitEnquiry(BrowserView):
             email = self.request.get('email')
             requestors = cat.searchResults(portal_type='EnquiryRequestor',
                                             Title=email)
-            if len(requestors) > 0:
+            if requestors:
                 password = requestors[0].getObject().getPassword()
                 mail_text = context.enquiry_mail_password_template(
                     context,
@@ -263,7 +263,7 @@ class EnquiryRequestor(BrowserView):
         cat = getToolByName(context, 'portal_enquiry_catalog')
         requestors = cat.searchResults(
             portal_type='EnquiryRequestor', Title=userid)
-        if len(requestors) > 0:
+        if requestors:
             user = requestors[0].getObject()
             return  ('OperationSuccess', {'COUNTRYREGION': user.getRegion(),
                      'EMAIL': user.Title(),

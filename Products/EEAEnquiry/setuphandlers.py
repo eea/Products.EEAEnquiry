@@ -43,7 +43,7 @@ def installTypesCatalog(context):
         atool.setCatalogsByType(meta_type, list(current_catalogs))
 
 
-#TODO: plone4, see if this is needed
+# NOTE: plone4, see if this is needed
 
 def switchPathIndex(context):
     """Changes the 'path' index to ExtendedPathIndex."""
@@ -65,7 +65,7 @@ def switchPathIndex(context):
         catalog.addIndex('path', 'ExtendedPathIndex')
         logger.info("Added ExtendedPathIndex 'path' to portal_catalog.")
 
-        #TODO: If this is still needed, then catalog reindexing is needed
+        # NOTE: If this is still needed, then catalog reindexing is needed
 
 
 def installCatalogIndexes(context):

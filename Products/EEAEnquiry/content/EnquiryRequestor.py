@@ -28,8 +28,7 @@ class UniqueRequestorValidator(object):
         cat = getToolByName(instance, 'portal_enquiry_catalog')
         requestors = cat.searchResults(
             portal_type='EnquiryRequestor', Title=value)
-        if (len(requestors) > 0 and
-            requestors[0].getObject().UID() != instance.UID()):
+        if requestors and requestors[0].getObject().UID() != instance.UID():
             return ("Your email already exists, please go 2 steps back in "
                     "your browser and request your password.")
         return 1
