@@ -1,6 +1,6 @@
-===========
-EEA Enquiry
-===========
+=========================================
+EEA Enquiry - OBSOLETE / NOT USED ANYMORE
+=========================================
 .. image:: http://ci.eionet.europa.eu/job/Products.EEAEnquiry-www/badge/icon
   :target: http://ci.eionet.europa.eu/job/Products.EEAEnquiry-www/lastBuild
 .. image:: http://ci.eionet.europa.eu/job/Products.EEAEnquiry-plone4/badge/icon
